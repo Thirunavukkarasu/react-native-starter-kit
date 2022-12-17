@@ -1,4 +1,12 @@
-import {View, Text, FlatList, Image, ScrollView, Pressable} from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  Image,
+  ScrollView,
+  Pressable,
+  SafeAreaView,
+} from 'react-native';
 import React from 'react';
 import FaIcon from 'react-native-vector-icons/FontAwesome';
 import {useNavigation} from '@react-navigation/native';
@@ -24,7 +32,7 @@ export default function WishList() {
         </View>
         <FaIcon name="shopping-bag" style={{fontSize: 16}} />
       </View>
-      <ScrollView className="mb-20">
+      <SafeAreaView className="mb-20">
         <FlatList
           data={data.products}
           keyExtractor={(item, index) => `${item}-${index}`}
@@ -80,7 +88,7 @@ export default function WishList() {
           }}
           numColumns={2}
         />
-      </ScrollView>
+      </SafeAreaView>
     </View>
   );
 }
