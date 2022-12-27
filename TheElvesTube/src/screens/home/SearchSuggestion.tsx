@@ -1,38 +1,47 @@
 import {View, Text, Pressable, FlatList, Alert} from 'react-native';
 import React from 'react';
 import MtcIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {DrawerActions, useNavigation} from '@react-navigation/native';
 
-type Props = {};
+import DrawerNavigation from '../../navigation/HomeDrawerNavigation';
+
+type Props = {
+  navigation: any;
+};
 
 const SearchSuggestion = (props: Props) => {
   const data = [
     {
-      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+      id: '1',
       title: 'All',
     },
     {
-      id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+      id: '2',
       title: 'Comedy',
     },
     {
-      id: '58694a0f-3da1-471f-bd96-145571e29d72',
+      id: '3',
       title: 'Argentina worldcup title',
     },
     {
-      id: '58694a0f-3da1-471f-bd96-145571e29d75',
+      id: '4',
       title: ' worldcup',
     },
     {
-      id: '58694a0f-3da1-471f-bd96-145571e29d79',
+      id: '5',
       title: ' Messi GOAT',
     },
   ];
 
+  const navigation = useNavigation();
+
   return (
     <>
-      <View className="flex flex-row h-12 my-2 mx-1 divide-x-[0.5px] divide-gray-500">
+      <DrawerNavigation />
+      <View className="flex flex-row h-[41px] mx-1 divide-x-[0.5px] divide-gray-500">
         <View className="w-12 px-2 py-2">
-          <Pressable>
+          <Pressable
+            onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
             <MtcIcon name="compass-outline" size={25} className="bg-zinc-100" />
           </Pressable>
         </View>
@@ -46,7 +55,7 @@ const SearchSuggestion = (props: Props) => {
             renderItem={({item}) => {
               return (
                 <>
-                  <View className="bg-zinc-100 rounded-2xl w-max mx-2 my-1 py-2 ">
+                  <View className="bg-zinc-100 rounded-2xl w-max mx-2 my-1 py-1 ">
                     <Pressable onPress={() => Alert.alert(item.title)}>
                       <Text className="font-sans font-black font-bold">
                         {item.title}
